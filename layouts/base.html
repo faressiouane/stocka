@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <title>
+{% block title %}
+{% endblock title %}
+    </title>
+
+</head>
+
+<body>
+{% include 'partials/_navbar.html' %}
+
+
+{% block content %}
+{% endblock content %}
+
+
+    <!-- jquery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script>
+      $(document).ready(function(){
+            $('.sidenav').sidenav();
+
+                {% block extra-script %}
+                {% endblock extra-script %}
+       });
+    </script>
+</body>
+
+</html>
