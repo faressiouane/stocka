@@ -3,5 +3,19 @@
 {% block content %}
 <div class ="container">
     <h1>hello world!</h1>
+
+    {% if api %}
+
+        {% if api == "Error" %}
+            <p> sorry something went wrong! </p>
+        {% else %}
+
+            {% for key, value in api.items %}
+            {{key}} : {{value}} <br>
+            {% endfor %}
+
+        {% endif %}
+    {% endif %}
+  
 </div>
 {% endblock content %}
