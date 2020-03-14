@@ -1,52 +1,103 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h1>stock :</h1>
-
-  <div class="row">
-    {% for ticker in tickers %}
-    <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="card-title">{{ticker.companyName}}</span>
-                <p>Price : {{ ticker.latestPrice }} $ </p>
-                <p>previous Close : {{ ticker.previousClose }} </p>
-                <p>market Cap : {{ ticker.marketCap }} </p>
-                <p>YTD Change : {{ ticker.ytdChange }} </p>
-                <p>52 week high : {{ ticker.week52High }} </p>
-                <p>52 week low : {{ ticker.week52Low }} </p>
-            </div>
-            {% comment %} <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-            </div> {% endcomment %}
+<br>
+  {% if messages %}
+<div class="row section">
+    <div class="col s12">
+        <div class="card-panel teal">
+            <span class="white-text">
+                {% for msg in messages %}
+                {{msg}}
+           
+                {% endfor %}
+            </span>
         </div>
     </div>
-    {% endfor %}
 </div>
+{% endif %}
+
+  <br>
+
+<div class="row section">
+    <form class="col s12" action="{% url 'stock' %}" method="POST">
+        {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s8">
+          <input id="ticker" name="ticker" type="text" class="validate">
+          <label for="ticker">New Ticker</label>
+        </div>
+        <div class="col s4 input-field">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add New
+                <i class="material-icons right">add</i>
+            </button>
+        </div>
+    
+      </div>
+    </form>
+  </div>
+
+
+
+    {% if tickers %}
+    <div class="row section">
+        <h1>stock :</h1>
+        {% for ticker in tickers %}
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{ticker.companyName}}</span>
+                    <p>Price : {{ ticker.latestPrice }} $ </p>
+                    <p>previous Close : {{ ticker.previousClose }} </p>
+                    <p>market Cap : {{ ticker.marketCap }} </p>
+                    <p>YTD Change : {{ ticker.ytdChange }} </p>
+                    <p>52 week high : {{ ticker.week52High }} </p>
+                    <p>52 week low : {{ ticker.week52Low }} </p>
+                </div>
+                {% comment %} <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div> {% endcomment %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>no tickers to track, please add some!</p>
+    {% endif %}
+
 
 </div>
 {% endblock content %}
 
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+
+        </div>
+
+    </form>
+</div>
 
 <div class="row">
-    {% for ticker in tickers %}
-    <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="card-title">{{ticker.companyName}}</span>
-                <p>Price : {{ ticker.latestPrice }} $ </p>
-                <p>previous Close : {{ ticker.previousClose }} </p>
-                <p>market Cap : {{ ticker.marketCap }} </p>
-                <p>YTD Change : {{ ticker.ytdChange }} </p>
-                <p>52 week high : {{ ticker.week52High }} </p>
-                <p>52 week low : {{ ticker.week52Low }} </p>
-            </div>
-            {% comment %} <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-            </div> {% endcomment %}
+    <form class="col s12" action="." method="POST">
+        {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s8">
+          <i class="material-icons prefix">add</i>
+          <input id="add_ticker" name="add_ticker" type="text" class="validate">
+          <label for="add_ticker">New Ticker</label>
         </div>
-    </div>
-    {% endfor %}
-</div>
+        <div class="col s4">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add New
+                <i class="material-icons right">add</i>
+            </button>
+        </div>
+    
+      </div>
+    </form>
+  </div>
