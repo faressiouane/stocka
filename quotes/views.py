@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Stock
 # Create your views here.
 
 def home(request):
@@ -21,3 +21,22 @@ def home(request):
 
     else:
         return render(request, 'home.html')
+
+
+
+def stock(request):
+    import requests
+    import json
+
+    symbols = Stock.objects.all()
+    tickers = []
+    for symbol in symbols:
+        api_request = requests.get(f"https://cloud.iexapis.com/stable/stock/{symbol}/quote?token=pk_4335e55ab8444511a9ad95399164cb69")
+
+        try:
+            api = json.loads(api_request.content)
+            tickers.append(api)
+        except Exception as e:
+            api = "Error"
+
+    return render(request, 'stock.html', {'tickers' : tickers})

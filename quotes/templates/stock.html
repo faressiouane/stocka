@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>stock :</h1>
+
+  <div class="row">
+    {% for ticker in tickers %}
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">{{ticker.companyName}}</span>
+                <p>Price : {{ ticker.latestPrice }} $ </p>
+                <p>previous Close : {{ ticker.previousClose }} </p>
+                <p>market Cap : {{ ticker.marketCap }} </p>
+                <p>YTD Change : {{ ticker.ytdChange }} </p>
+                <p>52 week high : {{ ticker.week52High }} </p>
+                <p>52 week low : {{ ticker.week52Low }} </p>
+            </div>
+            {% comment %} <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+            </div> {% endcomment %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock content %}
+
+
+<div class="row">
+    {% for ticker in tickers %}
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">{{ticker.companyName}}</span>
+                <p>Price : {{ ticker.latestPrice }} $ </p>
+                <p>previous Close : {{ ticker.previousClose }} </p>
+                <p>market Cap : {{ ticker.marketCap }} </p>
+                <p>YTD Change : {{ ticker.ytdChange }} </p>
+                <p>52 week high : {{ ticker.week52High }} </p>
+                <p>52 week low : {{ ticker.week52Low }} </p>
+            </div>
+            {% comment %} <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+            </div> {% endcomment %}
+        </div>
+    </div>
+    {% endfor %}
+</div>

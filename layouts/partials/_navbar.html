@@ -7,6 +7,8 @@
       <ul class="right hide-on-med-and-down">
 
         <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'stock' %}">stock</a></li>
+
 
         <li>
           <form method="POST" action=".">
@@ -25,7 +27,19 @@
 
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'stock' %}">stock</a></li>
 
+
+        <li>
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <div class="input-field">
+              <input id="search" type="search" name="query" placeholder="get stock quote" required>
+              <label class="label-icon" for="search"><i class="material-icons green-text">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </li>
       </ul>
 
 
