@@ -2,19 +2,26 @@
 
 {% block content %}
 <div class ="container">
-    <h1>hello world!</h1>
 
     {% if api %}
 
         {% if api == "Error" %}
-            <p> sorry something went wrong! </p>
+            <p> sorry something went wrong, please try again! </p>
         {% else %}
 
-            {% for key, value in api.items %}
-            {{key}} : {{value}} <br>
-            {% endfor %}
+    <h1>{{api.companyName}}</h1>
+    <p>Price : {{ api.latestPrice }} $ </p> 
+    <p>previous Close : {{ api.previousClose }} </p> 
+    <p>market Cap : {{ api.marketCap }} </p> 
+    <p>YTD Change : {{ api.ytdChange }} </p> 
+    <p>52 week high : {{ api.week52High }} </p> 
+    <p>52 week low : {{ api.week52Low }} </p> 
+
+
 
         {% endif %}
+    {% else %}
+    <p>please make a query!</p>
     {% endif %}
   
 </div>

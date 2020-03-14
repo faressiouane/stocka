@@ -8,6 +8,17 @@
 
         <li><a href="{% url 'home' %}">Home</a></li>
 
+        <li>
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <div class="input-field">
+              <input id="search" type="search" name="query" placeholder="get stock quote" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </li>
+
       </ul>
 
 
