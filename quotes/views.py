@@ -54,3 +54,12 @@ def stock(request):
         
 
         return render(request, 'stock.html', {'tickers' : tickers})
+
+
+
+def delete(request, symbol):
+    symbol = symbol.lower()
+    ticker_to_delete = Stock.objects.get(ticker = symbol)
+    ticker_to_delete.delete()
+    messages.success(request, "item deleted successfully!")
+    return redirect('stock')

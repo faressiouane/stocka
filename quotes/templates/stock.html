@@ -54,10 +54,10 @@
                     <p>52 week high : {{ ticker.week52High }} </p>
                     <p>52 week low : {{ ticker.week52Low }} </p>
                 </div>
-                {% comment %} <div class="card-action">
-                    <a href="#">This is a link</a>
-                    <a href="#">This is a link</a>
-                </div> {% endcomment %}
+                 <div class="card-action">
+                    <a href="{% url 'delete' ticker.symbol %}">Delete</a>
+                    {% comment %} <a href="#">This is a link</a> {% endcomment %}
+                </div> 
             </div>
         </div>
         {% endfor %}
