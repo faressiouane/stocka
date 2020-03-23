@@ -9,15 +9,62 @@
             <p> sorry something went wrong, please try again! </p>
         {% else %}
 
-    <h1>{{api.companyName}}</h1>
+    {% comment %} <h1>{{api.companyName}}</h1>
     <p>Price : {{ api.latestPrice }} $ </p> 
     <p>previous Close : {{ api.previousClose }} </p> 
     <p>market Cap : {{ api.marketCap }} </p> 
     <p>YTD Change : {{ api.ytdChange }} </p> 
     <p>52 week high : {{ api.week52High }} </p> 
-    <p>52 week low : {{ api.week52Low }} </p> 
+    <p>52 week low : {{ api.week52Low }} </p>  {% endcomment %}
 
+    <div class="row section">
+        
+        
+        <div class="col s12 m8 push-m2">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{api.companyName}}</span>
+                    <p>Price : {{ api.latestPrice }} $ </p>
+                    <p>previous Close : {{ api.previousClose }} </p>
+                    <p>market Cap : {{ api.marketCap }} </p>
+                    <p>YTD Change : {{ api.ytdChange }} </p>
+                    <p>52 week high : {{ api.week52High }} </p>
+                    <p>52 week low : {{ api.week52Low }} </p>
+                </div>
+                 {% comment %} <div class="card-action">
+                    <a href="{% url 'delete' ticker.symbol %}">Delete</a>
+                    <a href="#">This is a link</a>
+                </div>  {% endcomment %}
+            </div>
+        </div>
+        
+    </div>
 
+    {% comment %} <table>
+        <thead>
+          <tr>
+              <th>Company</th>
+              <th>Price</th>
+              <th>previous Close</th>
+              <th>market Cap</th>
+              <th>YTD Change</th>
+              <th>52 week high</th>
+              <th>52 week low</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{api.companyName}}</td>
+            <td>{{ api.latestPrice }} $</td>
+            <td>{{ api.previousClose }}</td>
+            <td>{{ api.marketCap }}</td>
+            <td>{{ api.ytdChange }}</td>
+            <td>{{ api.week52High }}</td>
+            <td>{{ api.week52Low }}</td>
+          </tr>
+        </tbody>
+      </table> {% endcomment %}
 
         {% endif %}
     {% else %}
